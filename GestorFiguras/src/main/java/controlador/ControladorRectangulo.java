@@ -72,5 +72,14 @@ public class ControladorRectangulo {
         return "El punto (" + x + ", " + y + ") está fuera del rectangulo";
     }
 
+
+    public String mover(double dx, double dy) {
+        if (!existeRectangulo()) {
+            return "Primero debes crear el rectángulo.";
+        }
+        rectangulo.mover(dx, dy);
+        return "Rectangulo movido\n" + describirRectangulo();
+    }
+
     
 }
