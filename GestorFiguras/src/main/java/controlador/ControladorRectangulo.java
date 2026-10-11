@@ -81,5 +81,23 @@ public class ControladorRectangulo {
         return "Rectangulo movido\n" + describirRectangulo();
     }
 
+
+    public String escalar(double factor) {
+        if (!existeRectangulo()) {
+            return "Primero debes crear el rectangulo";
+        }
+        if (factor <= 0) {
+            return "El factor de escala debe ser mayor que 0";
+        }
+        Punto v1 = rectangulo.getVertice1();
+        Punto v2 = rectangulo.getVertice2();
+
+        double nuevoX2 = v1.getX() + (v2.getX() - v1.getX()) * factor;
+        double nuevoY2 = v1.getY() + (v2.getY() - v1.getY()) * factor;
+
+        v2.setX(nuevoX2);
+        v2.setY(nuevoY2);
+        return "Rectangulo escalado por " + factor + "\n" + describirRectangulo();
+    }
     
 }
