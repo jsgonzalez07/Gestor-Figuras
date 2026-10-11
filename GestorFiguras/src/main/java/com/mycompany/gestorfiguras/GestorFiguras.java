@@ -3,7 +3,7 @@
  */
 
 package com.mycompany.gestorfiguras;
-
+import vista.VistaRectangulo;
 /**
  *
  * @author juans
@@ -11,6 +11,8 @@ package com.mycompany.gestorfiguras;
 public class GestorFiguras {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+            VistaRectangulo ventana = new VistaRectangulo();
+            ventana.setLocationRelativeTo(null);
+            ventana.setVisible(true);
     }
 }

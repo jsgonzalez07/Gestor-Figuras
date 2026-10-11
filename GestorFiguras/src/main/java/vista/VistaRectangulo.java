@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import controlador.ControladorRectangulo;
 /**
  *
  * @author juans
@@ -11,12 +11,14 @@ package vista;
 public class VistaRectangulo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaRectangulo.class.getName());
-
+    private ControladorRectangulo controlador;
+    
     /**
      * Creates new form VistaRectangulo
      */
     public VistaRectangulo() {
         initComponents();
+        controlador = new ControladorRectangulo();        
     }
 
     /**
@@ -267,23 +269,52 @@ public class VistaRectangulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPuntoXActionPerformed
 
     private void btnCrearRectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRectanguloActionPerformed
-        // TODO add your handling code here:
+        try {
+            double x1 = Double.parseDouble(txtX1.getText());
+            double y1 = Double.parseDouble(txtY1.getText());
+            double x2 = Double.parseDouble(txtX2.getText());
+            double y2 = Double.parseDouble(txtY2.getText());
+
+            areaResultados.setText(controlador.crearRectangulo(x1, y1, x2, y2));
+        } catch (NumberFormatException e) {
+            areaResultados.setText("Error: las coordenadas X1, Y1, X2 y Y2 deben ser números.");
+        }
     }//GEN-LAST:event_btnCrearRectanguloActionPerformed
 
     private void btnCalcularAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularAreaActionPerformed
-        // TODO add your handling code here:
+        areaResultados.setText(controlador.calcularArea());
     }//GEN-LAST:event_btnCalcularAreaActionPerformed
 
     private void btnValidarPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarPuntoActionPerformed
-        // TODO add your handling code here:
+        try {
+            double x = Double.parseDouble(txtPuntoX.getText());
+            double y = Double.parseDouble(txtPuntoY.getText());
+
+            areaResultados.setText(controlador.validarPunto(x, y));
+        } catch (NumberFormatException e) {
+            areaResultados.setText("Error: las coordenadas del punto deben ser números.");
+        }
     }//GEN-LAST:event_btnValidarPuntoActionPerformed
 
     private void btnMoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverActionPerformed
-        // TODO add your handling code here:
+        try {
+            double dx = Double.parseDouble(txtDx.getText());
+            double dy = Double.parseDouble(txtDy.getText());
+
+            areaResultados.setText(controlador.mover(dx, dy));
+        } catch (NumberFormatException e) {
+            areaResultados.setText("Error: dx y dy deben ser números.");
+        }
     }//GEN-LAST:event_btnMoverActionPerformed
 
     private void btnEscalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscalarActionPerformed
-        // TODO add your handling code here:
+        try {
+            double factor = Double.parseDouble(txtFactor.getText());
+
+            areaResultados.setText(controlador.escalar(factor));
+        } catch (NumberFormatException e) {
+            areaResultados.setText("Error: el factor de escala debe ser un número.");
+        }
     }//GEN-LAST:event_btnEscalarActionPerformed
 
     /**
