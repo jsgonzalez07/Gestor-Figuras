@@ -30,5 +30,16 @@ public class ControladorRectangulo {
              + "Area: " + rectangulo.calcularArea();
     }
 
+
+    public String crearRectangulo(double x1, double y1, double x2, double y2) {
+        if (x1 == x2 || y1 == y2) {
+            return "No se puede crear: los vértices deben tener X distintas y Y distintas.";
+        }
+        Punto vertice1 = new Punto(x1, y1);
+        Punto vertice2 = new Punto(x2, y2);
+        rectangulo = new Rectangulo(vertice1, vertice2);
+        return "Rectangulo creado correctamente\n" + describirRectangulo();
+    }
+
     
 }
