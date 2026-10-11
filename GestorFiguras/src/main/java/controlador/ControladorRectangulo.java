@@ -49,5 +49,28 @@ public class ControladorRectangulo {
         return "Area del rectangulo: " + rectangulo.calcularArea();
     }
 
+
+    public String validarPunto(double x, double y) {
+        if (!existeRectangulo()) {
+            return "Primero debes crear el rectangulo";
+        }
+        double x1 = rectangulo.getVertice1().getX();
+        double y1 = rectangulo.getVertice1().getY();
+        double x2 = rectangulo.getVertice2().getX();
+        double y2 = rectangulo.getVertice2().getY();
+
+
+        double minX = Math.min(x1, x2);
+        double maxX = Math.max(x1, x2);
+        double minY = Math.min(y1, y2);
+        double maxY = Math.max(y1, y2);
+
+
+        if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
+            return "El punto (" + x + ", " + y + ") está dentro del rectangulo";
+        }
+        return "El punto (" + x + ", " + y + ") está fuera del rectangulo";
+    }
+
     
 }
