@@ -41,5 +41,13 @@ public class ControladorRectangulo {
         return "Rectangulo creado correctamente\n" + describirRectangulo();
     }
 
+
+    public String calcularArea() {
+        if (!existeRectangulo()) {
+            return "Primero debes crear el rectangulo";
+        }
+        return "Area del rectangulo: " + rectangulo.calcularArea();
+    }
+
     
 }
